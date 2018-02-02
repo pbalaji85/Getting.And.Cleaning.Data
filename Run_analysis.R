@@ -1,7 +1,7 @@
 library(dplyr)
 library(tidyr)
 
-setwd('~Coursera/UCI HAR Dataset/')
+setwd('~Getting.And.Cleaning.Data/UCI HAR Dataset/')
 
 ## Read in the training features dataset
 x_train <- read.table(file = 'train/X_train.txt')
@@ -72,4 +72,6 @@ final_grouped <- group_by(final, Activity, Subject)
 ## Calculate the mean for all the features grouped by Activity and Subject
 result <- summarize_all(final_grouped, funs(mean))
 
+## Finally export the table
+write.table(result,'tidy.txt',sep="\t", row.names = F)
                                                             
